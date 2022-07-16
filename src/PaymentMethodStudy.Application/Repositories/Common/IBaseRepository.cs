@@ -16,13 +16,13 @@ namespace PaymentMethodStudy.Application.Repositories
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate = null, bool tracking = true);
 
         // Create / Update / Delete
-        Guid Add(TEntity entity);
-        Task<Guid> AddAsync(TEntity entity);
-        int Add(IEnumerable<TEntity> entities);
-        Task<int> AddAsync(IEnumerable<TEntity> entities);
+        TEntity Add(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
+        IEnumerable<TEntity> Add(IEnumerable<TEntity> entities);
+        Task<IEnumerable<TEntity>> AddAsync(IEnumerable<TEntity> entities);
 
-        Guid Update(TEntity entity);
-        Task<int> UpdateAsync(TEntity entity);
+        TEntity Update(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity);
 
         int Delete(TEntity entity);
         Task<int> DeleteAsync(TEntity entity);

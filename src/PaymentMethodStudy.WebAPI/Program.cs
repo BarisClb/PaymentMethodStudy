@@ -1,5 +1,7 @@
 using FluentValidation.AspNetCore;
 using MediatR;
+using PaymentMethodStudy.Application;
+using PaymentMethodStudy.Infrastructure;
 using PaymentMethodStudy.Persistence;
 using PaymentMethodStudy.WebAPI.Filters;
 using PaymentMethodStudy.WebAPI.Middlewares;
@@ -7,7 +9,8 @@ using PaymentMethodStudy.WebAPI.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 
 // Adding Service Registrations
-// MsSQL Connection
+builder.Services.ImplementApplicationServices();
+builder.Services.ImplementInfrastructureServices();
 builder.Services.ImplementPersistenceServices(builder.Configuration.GetConnectionString("MsSQL"));
 
 // Adding Logging
@@ -21,7 +24,7 @@ builder.Services.ImplementPersistenceServices(builder.Configuration.GetConnectio
 //});
 
 // Adding Mediatr
-builder.Services.AddMediatR(typeof(Program).Assembly);
+//builder.Services.AddMediatR(typeof(Program).Assembly);
 
 // Adding CORS
 builder.Services.AddCors(options =>
@@ -39,7 +42,7 @@ builder.Services.AddCors(options =>
 
 // Adding Filters and Validation (FluentValidation)
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
-    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining(typeof(PaymentMethodStudy.Application.Validators.Account.CreateAccountCommandValidator)));
+    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining(typeof(PaymentMethodStudy.Infrastructure.FluentValidation.Account.CreateAccountCommandValidator)));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

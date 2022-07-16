@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaymentMethodStudy.Domain.Entities
+namespace PaymentMethodStudy.Application.CQRS.Commands.Account.UpdateAccount
 {
-    public class Account : BaseEntity
+    public class UpdateAccountCommandResponse
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string CreditCardNumber { get; set; }

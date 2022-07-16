@@ -7,20 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="FluentValidation" Version="11.1.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PaymentMethodStudy.Domain\PaymentMethodStudy.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CQRS\Commands\Account\DeleteAccount\" />
-    <Folder Include="CQRS\Commands\Account\UpdateAccount\" />
-    <Folder Include="CQRS\Queries\Account\GetByIdAccount\" />
-    <Folder Include="CQRS\Queries\Account\GetAllAccount\" />
   </ItemGroup>
 
 </Project>

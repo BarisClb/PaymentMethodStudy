@@ -60,38 +60,40 @@ namespace PaymentMethodStudy.Persistence.Repositories
 
         // Create / Update / Delete
 
-        public virtual Guid Add(TEntity entity)
+        public virtual TEntity Add(TEntity entity)
         {
             Table.Add(entity);
             _context.SaveChanges();
-            return entity.Id;
+            return entity;
         }
 
-        public virtual async Task<Guid> AddAsync(TEntity entity)
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             await Table.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return entity.Id;
+            return entity;
         }
 
-        public virtual int Add(IEnumerable<TEntity> entities)
+        public virtual IEnumerable<TEntity> Add(IEnumerable<TEntity> entities)
         {
             Table.AddRange(entities);
-            return _context.SaveChanges();
+            _context.SaveChanges();
+            return entities;
         }
 
-        public virtual async Task<int> AddAsync(IEnumerable<TEntity> entities)
+        public virtual async Task<IEnumerable<TEntity>> AddAsync(IEnumerable<TEntity> entities)
         {
             await Table.AddRangeAsync(entities);
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return entities;
         }
 
 
-        public virtual Guid Update(TEntity entity)
+        public virtual TEntity Update(TEntity entity)
         {
             Table.Update(entity);
             _context.SaveChanges();
-            return entity.Id;
+            return entity;
 
             //Table.Attach(entity);
             //_context.Entry(entity).State = EntityState.Modified;
@@ -99,11 +101,12 @@ namespace PaymentMethodStudy.Persistence.Repositories
             //return entity.Id;
         }
 
-        public virtual async Task<int> UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             Table.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
 

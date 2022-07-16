@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaymentMethodStudy.Domain.Entities
+namespace PaymentMethodStudy.Application.CQRS.Queries.Account.GetAccountByEmail
 {
-    public class Account : BaseEntity
+    public class GetAccountByEmailQueryResponse
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string CreditCardNumber { get; set; }
         public string CreditCardSecurityNumber { get; set; }
-        public string CreditCardExpirationMonth { get; set; }
-        public string CreditCardExpirationYear { get; set; }
+        public byte CreditCardExpirationMonth { get; set; }
+        public byte CreditCardExpirationYear { get; set; }
         public decimal Balance { get; set; }
         public CreditCardStatus CreditCardStatus { get; set; }
     }

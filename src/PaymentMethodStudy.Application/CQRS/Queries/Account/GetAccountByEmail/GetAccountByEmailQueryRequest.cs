@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaymentMethodStudy.Application.CQRS.Commands.Account.CreateAccount
+namespace PaymentMethodStudy.Application.CQRS.Queries.Account.GetAccountByEmail
 {
-    public class CreateAccountCommandRequest : IRequest<BaseResponse>
+    public class GetAccountByEmailQueryRequest : IRequest<BaseResponse>
     {
-        public string Name { get; set; }
         public string Email { get; set; }
     }
 }
